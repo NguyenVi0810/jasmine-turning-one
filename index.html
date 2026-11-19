@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiệp mời thôi nôi – [Tên bé]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#FFFBFA; --blush:#FDF1F2; --blush-2:#F6DADF; --white:#FFFFFF;
+  --ink:#3D2A2E; --body:#6B5257; --muted:#7E5F65; --quote:#5A4247;
+  --rose:#A3485E; --rose-dark:#7E3346; --rose-soft:#B8687A;
+  --line:#EED9DD; --line-2:#E6CCD2; --gold:#C9A56B; --ph:#8A5A66;
+  --serif:'Playfair Display', Georgia, serif;
+  --script:'Great Vibes', cursive;
+  --sans:'Be Vietnam Pro', system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--rose)}a:hover{color:var(--rose-dark)}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+input::placeholder,textarea::placeholder{color:#A88A90}
+img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ornaments & headings */
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:.32em;color:var(--rose);text-transform:uppercase}
+.orn{display:flex;align-items:center;gap:12px;justify-content:center}
+.orn span{width:56px;height:1px;background:var(--gold)}
+.sec-head{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:56px}
+.sec-head h2{margin:0;font:500 46px/1.2 var(--serif)}
+.sec-head p{margin:0;font-size:16px;color:var(--body);font-weight:300}
+section{padding:104px 0}
+.bg-blush{background:var(--blush)}
+.bg-white{background:var(--white)}
+
+/* buttons */
+.btn{height:54px;padding:0 30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font:500 16px var(--sans);text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+.btn-primary{background:var(--rose);color:#fff;box-shadow:0 12px 28px rgba(163,72,94,.22)}
+.btn-primary:hover{background:var(--rose-dark);color:#fff;transform:translateY(-1px)}
+.btn-ghost{background:transparent;border-color:var(--gold);color:var(--ink)}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+
+/* cover */
+.cover{position:fixed;inset:0;z-index:50;background:var(--blush);display:flex;align-items:center;justify-content:center;padding:28px;overflow:hidden;transition:opacity .7s ease, visibility .7s ease}
+.cover.hidden{opacity:0;visibility:hidden}
+.cover::before,.cover::after{content:"";position:absolute;border-radius:50%;border:1px solid #E9C3CA}
+.cover::before{width:300px;height:300px;top:-110px;right:-110px}
+.cover::after{width:360px;height:360px;bottom:-150px;left:-130px}
+.cover-card{position:relative;width:100%;max-width:420px;background:#fff;border:1px solid var(--line);outline:1px solid var(--gold);outline-offset:-10px;border-radius:28px;box-shadow:0 30px 60px rgba(163,72,94,.12);padding:48px 28px 36px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;animation:rise .9s ease both}
+.cover-card .script{margin:0;font:400 54px/1 var(--script);color:var(--rose-soft)}
+.cover-card h1{margin:0;font:500 50px/1.05 var(--serif)}
+.cover-card .guest{margin:0;font-size:15px;line-height:1.7;color:var(--body);font-weight:300}
+.seal{margin-top:20px;width:104px;height:104px;border-radius:50%;background:var(--rose);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 8px var(--blush-2),0 0 0 9px var(--gold);color:#fff}
+.seal b{font:500 40px/1 var(--serif)}
+.seal small{font-size:11px;letter-spacing:.26em;margin-top:4px}
+.cover-date{margin:22px 0 6px;font-size:14px;color:var(--muted)}
+.cover .btn{width:100%}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:20;background:rgba(255,251,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid #F1E0E3}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand-mark{width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font:400 26px/1 var(--script);color:var(--rose)}
+.brand-name{font:500 18px/1.1 var(--serif)}
+.nav-links{display:flex;gap:28px;font-size:14px}
+.nav-links a{text-decoration:none;color:var(--body)}
+.nav-links a:hover{color:var(--rose)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid #EAD3D7;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rose)}
+.icon-btn[aria-pressed="true"]{background:var(--rose);color:#fff;border-color:var(--rose)}
+.nav .btn{height:44px;padding:0 22px;font-size:14px;box-shadow:none}
+
+/* hero */
+.hero{background:var(--blush);padding:88px 0 104px}
+.hero-in{display:flex;flex-wrap:wrap;align-items:center;gap:64px}
+.hero-text{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.hero-text .script{margin:0;font:400 60px/1 var(--script);color:var(--rose-soft)}
+.hero-text h1{margin:0;font:500 92px/1.02 var(--serif);letter-spacing:-.01em}
+.hero-text .orn{justify-content:flex-start}
+.hero-text .orn span{width:72px}
+.lead{margin:0;max-width:500px;font-size:18px;line-height:1.7;color:var(--body);font-weight:300}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.chip{display:flex;align-items:center;gap:10px;padding:12px 18px;background:#fff;border:1px solid var(--line);border-radius:999px;font-size:15px}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
+.hero-photo{flex:1 1 420px;min-width:0;display:flex;justify-content:center}
+.arch-wrap{position:relative;width:420px;max-width:100%}
+.arch{width:100%;aspect-ratio:7/9;border-radius:210px 210px 28px 28px;background:var(--blush-2);border:1px solid #E9C3CA;outline:1px solid var(--gold);outline-offset:-14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--ph);overflow:hidden}
+.arch span{font-size:14px;letter-spacing:.08em}
+.badge-age{position:absolute;left:-36px;bottom:56px;width:128px;height:128px;border-radius:50%;background:#fff;border:1px solid var(--gold);box-shadow:0 18px 40px rgba(163,72,94,.14);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:float 5s ease-in-out infinite}
+.badge-age b{font:500 54px/1 var(--serif);color:var(--rose)}
+.badge-age small{font-size:12px;letter-spacing:.28em;color:var(--muted);margin-top:4px}
+.badge-hb{position:absolute;right:-20px;top:64px;padding:12px 18px;border-radius:16px;background:#fff;box-shadow:0 14px 32px rgba(163,72,94,.12);font:400 26px/1 var(--script);color:var(--rose)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* countdown */
+.countdown{padding:56px 0;background:#fff;border-bottom:1px solid #F3E4E7}
+.cd-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px}
+.cd-title{display:flex;flex-direction:column;gap:6px}
+.cd-title span:last-child{font:500 30px/1.25 var(--serif)}
+.cd-boxes{display:flex;flex-wrap:wrap;gap:16px}
+.cd-box{width:120px;padding:20px 0;border-radius:20px;background:var(--blush);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:6px}
+.cd-box b{font:500 44px/1 var(--serif);color:var(--rose);font-variant-numeric:tabular-nums}
+.cd-box span{font-size:13px;color:var(--muted)}
+
+/* letter */
+.letter{max-width:820px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.letter h2{margin:0;font:500 46px/1.2 var(--serif)}
+.quote{margin:0;font:italic 500 22px/1.75 var(--serif);color:var(--quote)}
+.letter p.body{margin:0;font-size:17px;line-height:1.8;color:var(--body);font-weight:300}
+.sign{margin:8px 0 0;font:400 40px/1.2 var(--script);color:var(--rose)}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.g-card{margin:0;background:#fff;border-radius:24px;padding:14px 14px 22px;box-shadow:0 10px 30px rgba(163,72,94,.07);display:flex;flex-direction:column;gap:16px;transition:transform .3s ease}
+.g-card:hover{transform:translateY(-4px)}
+.g-photo{height:300px;border-radius:120px 120px 14px 14px;background:var(--blush-2);display:flex;align-items:center;justify-content:center;color:var(--ph);font-size:13px}
+.g-card figcaption{display:flex;flex-direction:column;gap:4px;padding:0 8px;text-align:center}
+.g-card figcaption b{font:500 20px/1.3 var(--serif)}
+.g-card figcaption span{font-size:14px;color:var(--muted)}
+
+/* info */
+.info{display:flex;flex-wrap:wrap;gap:32px}
+.info-list{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.info-item{display:flex;gap:18px;padding:24px;border-radius:20px;border:1px solid #F0DDE1;background:var(--ground)}
+.info-ico{flex:none;width:52px;height:52px;border-radius:50%;background:var(--blush);display:flex;align-items:center;justify-content:center}
+.info-item .k{font-size:13px;letter-spacing:.16em;color:var(--muted)}
+.info-item .v{font:500 20px/1.35 var(--serif)}
+.info-item .s{font-size:15px;color:var(--body)}
+.info-item>div{display:flex;flex-direction:column;gap:4px}
+.swatches{display:flex;gap:8px;margin-top:6px}
+.swatches i{width:22px;height:22px;border-radius:50%;display:block}
+.info-map{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.map{height:360px;border-radius:24px;background:var(--blush);border:1px solid #F0DDE1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--ph);font-size:14px;text-align:center;padding:16px}
+.map-actions{display:flex;flex-wrap:wrap;gap:12px}
+.map-actions .btn{flex:1 1 200px;height:52px}
+
+/* schedule */
+.schedule{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.schedule li{background:#fff;border-radius:24px;padding:32px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;border:1px solid #F0DDE1}
+.s-ico{width:64px;height:64px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.s-time{font-weight:500;font-size:15px;color:var(--rose);letter-spacing:.1em}
+.s-name{font:500 21px/1.3 var(--serif)}
+.s-desc{font-size:14px;line-height:1.6;color:var(--body)}
+
+/* rsvp */
+.rsvp-card{max-width:1036px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px;padding:48px;border-radius:32px;background:var(--ground);border:1px solid var(--line);box-shadow:0 24px 60px rgba(163,72,94,.08)}
+.rsvp-intro{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:18px}
+.rsvp-intro h2{margin:0;font:500 44px/1.2 var(--serif)}
+.rsvp-intro p{margin:0;font-size:16px;line-height:1.75;color:var(--body);font-weight:300}
+.rsvp-intro .script{margin-top:18px;font:400 34px/1.2 var(--script);color:var(--rose-soft)}
+.contact{display:flex;align-items:center;gap:10px;font-size:15px;margin-top:8px}
+.rsvp-form-wrap{flex:1 1 420px;min-width:0}
+form{display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label,legend{font-size:14px;font-weight:500}
+.field label small{color:var(--muted);font-weight:400;font-size:14px}
+.input{height:50px;padding:0 16px;border-radius:14px;border:1px solid var(--line-2);background:#fff;font:400 15px var(--sans);color:var(--ink);width:100%}
+textarea.input{height:auto;padding:14px 16px;line-height:1.6;resize:vertical}
+.input:focus{outline:2px solid #E7A1AE;outline-offset:1px;border-color:#C27C8B}
+.err{font-size:13px;color:var(--rose)}
+fieldset{border:0;margin:0;padding:0}
+legend{padding:0;margin-bottom:8px}
+.pills{display:flex;gap:12px}
+.pill{flex:1;height:50px;border-radius:999px;font:500 15px var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--body);border:1px solid var(--line-2);transition:all .2s ease}
+.pill[aria-pressed="true"]{background:var(--rose);color:#fff;border-color:var(--rose)}
+.pill svg{display:none}.pill[aria-pressed="true"] svg{display:block}
+.stepper{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 16px;border-radius:14px;border:1px solid var(--line-2);background:#fff}
+.stepper .ctrl{display:flex;align-items:center;gap:14px}
+.step-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:var(--blush);color:var(--rose);font-size:20px;cursor:pointer}
+.step-val{min-width:24px;text-align:center;font:500 22px/1 var(--serif)}
+.submit{height:56px;border:0;border-radius:999px;background:var(--rose);color:#fff;font:500 16px var(--sans);cursor:pointer;box-shadow:0 12px 28px rgba(163,72,94,.25)}
+.submit:hover{background:var(--rose-dark)}
+.thanks{min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.thanks .heart{width:84px;height:84px;border-radius:50%;background:var(--blush);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.thanks h3{margin:0;font:500 30px/1.3 var(--serif)}
+.thanks p{margin:0;max-width:360px;font-size:16px;line-height:1.7;color:var(--body)}
+[hidden]{display:none !important}
+
+/* wishes */
+.wishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.wish{background:#fff;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;border:1px solid #F0DDE1;animation:rise .5s ease both}
+.wish p{margin:0;font:italic 500 17px/1.7 var(--serif);color:var(--quote)}
+.who{display:flex;align-items:center;gap:12px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--blush-2);display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--rose)}
+.who b{font-weight:500;font-size:15px;display:block}
+.who small{font-size:13px;color:var(--muted)}
+.empty{padding:48px 24px;border-radius:24px;border:1px dashed #DDB6BF;background:var(--ground);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.empty b{font:500 20px/1.3 var(--serif)}
+.empty span{font-size:15px;color:var(--body)}
+
+/* footer */
+footer{background:#fff;border-top:1px solid #F3E4E7;padding:80px 0 56px;text-align:center}
+footer .script{margin:0;font:400 56px/1.1 var(--script);color:var(--rose)}
+footer p{margin:14px 0;font-size:16px;color:var(--body);font-weight:300}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* responsive */
+@media (max-width: 960px){
+  .nav-links{display:none}
+}
+@media (max-width: 640px){
+  .wrap{padding:0 20px}
+  section{padding:64px 0}
+  .sec-head{margin-bottom:32px}
+  .sec-head h2,.letter h2{font-size:30px}
+  .eyebrow{font-size:12px;letter-spacing:.28em}
+  .brand-name{font-size:16px}
+  .nav .btn{display:none}
+  .hero{padding:32px 0 56px}
+  .hero-in{flex-direction:column-reverse;gap:28px;text-align:center}
+  .hero-text{align-items:center;gap:16px;flex-basis:auto}
+  .hero-text .orn{justify-content:center}
+  .hero-text .script{font-size:40px}
+  .hero-text h1{font-size:52px}
+  .lead{font-size:15px}
+  .chips{flex-direction:column;width:100%}
+  .chip{border-radius:16px;font-size:14px;text-align:left}
+  .ctas{width:100%;flex-direction:column}
+  .ctas .btn{width:100%}
+  .hero-photo{flex-basis:auto;width:100%}
+  .arch-wrap{width:280px}
+  .arch{border-radius:140px 140px 22px 22px;outline-offset:-10px}
+  .badge-age{left:auto;right:-22px;bottom:28px;width:88px;height:88px}
+  .badge-age b{font-size:36px}.badge-age small{font-size:10px}
+  .badge-hb{display:none}
+  .countdown{padding:32px 0}
+  .cd-in{flex-direction:column;gap:16px;text-align:center}
+  .cd-title span:last-child{display:none}
+  .cd-boxes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%}
+  .cd-box{width:auto;padding:14px 0;border-radius:16px}
+  .cd-box b{font-size:28px}
+  .cd-box span{font-size:12px}
+  .letter{padding:0 28px;gap:18px}
+  .quote{font-size:18px}
+  .letter p.body{font-size:15px}
+  .sign{font-size:32px}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .g-card{padding:10px 10px 16px;border-radius:20px;gap:12px}
+  .g-photo{height:190px;border-radius:80px 80px 12px 12px}
+  .g-card figcaption b{font-size:16px}
+  .g-card figcaption span{display:none}
+  .info-list,.info-map{flex-basis:100%}
+  .info-item{padding:18px;gap:14px;border-radius:18px;background:#fff}
+  .info-ico{width:44px;height:44px}
+  .info-item .v{font-size:17px}
+  .map{height:200px;border-radius:20px}
+  .map-actions .btn{flex:1 1 40%;height:50px;font-size:15px;padding:0 12px}
+  .schedule{display:flex;flex-direction:column;gap:0;padding-left:13px}
+  .schedule li{flex-direction:row;align-items:flex-start;text-align:left;background:none;border:0;border-left:1px solid #DDB6BF;border-radius:0;padding:0 0 24px 26px;position:relative;gap:0}
+  .schedule li:last-child{border-left-color:transparent}
+  .schedule li .s-ico{position:absolute;left:-17px;top:0;width:34px;height:34px;background:#fff}
+  .schedule li .s-ico svg{width:16px;height:16px}
+  .schedule li .s-txt{display:flex;flex-direction:column;gap:4px;padding-top:4px}
+  .s-name{font-size:18px}
+  .rsvp-card{padding:28px 20px;gap:24px;border-radius:26px;background:#fff}
+  .rsvp-intro{text-align:center;align-items:center;gap:10px}
+  .rsvp-intro h2{font-size:28px}
+  .rsvp-intro p{font-size:14px}
+  .rsvp-intro .script{display:none}
+  .input{background:var(--ground)}
+  .pill{font-size:14px}
+  .thanks{min-height:0;padding:20px 0}
+  .wishes{grid-template-columns:1fr}
+  footer{padding:56px 0 64px}
+  footer .script{font-size:44px}
+  footer p{font-size:14px}
+}
+@media (min-width: 641px){ .schedule li .s-txt{display:contents} }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.8 3 2.6 3.5 5.2"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C12 6 10 4 12 2c2 2 0 4 0 7.5M14.5 12C18 12 20 10 22 12c-2 2-4 0-7.5 0M12 14.5c0 3.5 2 5.5 0 7.5-2-2 0-4 0-7.5M9.5 12C6 12 4 14 2 12c2-2 4 0 7.5 0"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></symbol>
+    <symbol id="i-cake" viewBox="0 0 24 24"><path d="M4 21h16M5 21v-7h14v7M12 14V9M12 6.5c.8-.8.8-2 0-3-.8 1-.8 2.2 0 3z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
+  </defs>
+</svg>
+<style>.ic{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}</style>
+
+<!-- COVER -->
+<div class="cover" id="cover" role="dialog" aria-modal="true" aria-labelledby="cover-name">
+  <div class="cover-card">
+    <span class="eyebrow">Thiệp mời</span>
+    <p class="script">Thôi nôi</p>
+    <div class="orn" aria-hidden="true"><span style="width:44px"></span><svg class="ic" width="12" height="12" style="color:var(--gold)"><use href="#i-heart"/></svg><span style="width:44px"></span></div>
+    <h1 id="cover-name" data-bind="babyName">[Tên bé]</h1>
+    <p class="guest">Trân trọng kính mời<br><span id="guest-name">Quý khách</span></p>
+    <div class="seal" aria-hidden="true"><b>1</b><small>TUỔI</small></div>
+    <p class="cover-date" data-bind="dateShort">[Ngày tổ chức tiệc]</p>
+    <button type="button" class="btn btn-primary" id="open-btn">Mở thiệp <svg class="ic" width="18" height="18"><use href="#i-arrow"/></svg></button>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><span class="brand-mark">1</span><span class="brand-name">Tiệc Thôi Nôi</span></a>
+    <nav class="nav-links" aria-label="Điều hướng">
+      <a href="#loi-ngo">Lời ngỏ</a><a href="#hanh-trinh">Hành trình</a><a href="#thong-tin">Thông tin tiệc</a><a href="#chuong-trinh">Chương trình</a><a href="#loi-chuc">Lời chúc</a>
+    </nav>
+    <div class="nav-actions">
+      <button type="button" class="icon-btn" id="music-btn" aria-pressed="false" aria-label="Bật hoặc tắt nhạc nền"><svg class="ic" width="18" height="18"><use href="#i-music"/></svg></button>
+      <a href="#xac-nhan" class="btn btn-primary">Xác nhận tham dự</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-text">
+      <span class="eyebrow">Trân trọng kính mời</span>
+      <p class="script">Mừng bé tròn 1 tuổi</p>
+      <h1 data-bind="babyName">[Tên bé]</h1>
+      <div class="orn" aria-hidden="true"><span></span><svg class="ic" width="14" height="14" style="color:var(--gold)"><use href="#i-heart"/></svg><span></span></div>
+      <p class="lead">Cả nhà rất hân hạnh được đón tiếp quý khách đến chung vui trong ngày sinh nhật đầu đời của bé – một cột mốc nhỏ, nhưng là niềm hạnh phúc lớn của gia đình.</p>
+      <div class="chips">
+        <div class="chip"><svg class="ic" width="18" height="18" style="color:var(--rose)"><use href="#i-cal"/></svg><span data-bind="dateTime">[Giờ] · [Thứ …, ngày … tháng … năm …]</span></div>
+        <div class="chip"><svg class="ic" width="18" height="18" style="color:var(--rose)"><use href="#i-pin"/></svg><span data-bind="venueName">[Địa điểm tổ chức]</span></div>
+      </div>
+      <div class="ctas">
+        <a href="#xac-nhan" class="btn btn-primary">Xác nhận tham dự</a>
+        <a href="#thong-tin" class="btn btn-ghost">Xem thông tin tiệc</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="arch-wrap">
+        <div class="arch" id="hero-photo"><svg class="ic" width="40" height="40" style="stroke-width:1.2"><use href="#i-cam"/></svg><span>Ảnh chân dung của bé</span></div>
+        <div class="badge-age" aria-hidden="true"><b>1</b><small>TUỔI</small></div>
+        <div class="badge-hb" aria-hidden="true">Happy 1st Birthday</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="countdown" aria-label="Đếm ngược">
+  <div class="wrap cd-in">
+    <div class="cd-title"><span class="eyebrow">Đếm ngược</span><span>Đến ngày vui của bé</span></div>
+    <div class="cd-boxes" role="timer" aria-live="off">
+      <div class="cd-box"><b id="cd-d">--</b><span>Ngày</span></div>
+      <div class="cd-box"><b id="cd-h">--</b><span>Giờ</span></div>
+      <div class="cd-box"><b id="cd-m">--</b><span>Phút</span></div>
+      <div class="cd-box"><b id="cd-s">--</b><span>Giây</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LỜI NGỎ -->
+<section id="loi-ngo">
+  <div class="letter reveal">
+    <span class="eyebrow">Lời ngỏ</span>
+    <h2>Gửi những người thân yêu</h2>
+    <div class="orn" aria-hidden="true"><span></span><svg class="ic" width="14" height="14" style="color:var(--gold)"><use href="#i-heart"/></svg><span></span></div>
+    <p class="quote">“Một năm trước, con đến bên bố mẹ như một món quà nhỏ bé và kỳ diệu. Từ tiếng khóc đầu tiên, nụ cười đầu tiên đến những bước chân chập chững – mỗi ngày bên con đều là hạnh phúc.”</p>
+    <p class="body">Nhân dịp con tròn một tuổi, gia đình xin trân trọng kính mời quý khách đến chung vui, cùng gửi đến con những lời chúc bình an và tốt đẹp nhất.</p>
+    <p class="sign" data-bind="parents">Bố [Tên bố] &amp; Mẹ [Tên mẹ]</p>
+  </div>
+</section>
+
+<!-- HÀNH TRÌNH -->
+<section id="hanh-trinh" class="bg-blush">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Hành trình</span>
+      <h2>12 tháng yêu thương</h2>
+      <p>Những khoảnh khắc đáng nhớ trong năm đầu đời của bé</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- THÔNG TIN -->
+<section id="thong-tin" class="bg-white">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Thông tin</span><h2>Buổi tiệc thôi nôi</h2></div>
+    <div class="info reveal">
+      <div class="info-list">
+        <div class="info-item"><span class="info-ico"><svg class="ic" width="22" height="22" style="color:var(--rose)"><use href="#i-clock"/></svg></span><div><span class="k">THỜI GIAN</span><span class="v" data-bind="dateTime">[Giờ] · [Ngày tổ chức]</span></div></div>
+        <div class="info-item"><span class="info-ico"><svg class="ic" width="22" height="22" style="color:var(--rose)"><use href="#i-pin"/></svg></span><div><span class="k">ĐỊA ĐIỂM</span><span class="v" data-bind="venueName">[Tên nhà hàng / sảnh tiệc]</span><span class="s" data-bind="venueAddress">[Địa chỉ chi tiết]</span></div></div>
+        <div class="info-item"><span class="info-ico"><svg class="ic" width="22" height="22" style="color:var(--rose)"><use href="#i-spark"/></svg></span><div><span class="k">TRANG PHỤC GỢI Ý</span><span class="v">Tông hồng pastel hoặc trắng</span>
+          <div class="swatches" aria-hidden="true"><i style="background:#F6C9D2;border:1px solid #EBB4BF"></i><i style="background:#FBE3E8;border:1px solid #EFCAD2"></i><i style="background:#fff;border:1px solid #E5D3D6"></i></div></div></div>
+      </div>
+      <div class="info-map">
+        <div class="map"><svg class="ic" width="36" height="36" style="stroke-width:1.3"><use href="#i-map"/></svg><span data-bind="venueAddress">[Địa chỉ chi tiết]</span></div>
+        <div class="map-actions">
+          <a class="btn btn-primary" id="map-link" href="https://www.google.com/maps" target="_blank" rel="noopener">Chỉ đường</a>
+          <a class="btn btn-ghost" id="cal-link" href="https://calendar.google.com" target="_blank" rel="noopener">Thêm vào lịch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHƯƠNG TRÌNH -->
+<section id="chuong-trinh" class="bg-blush">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Chương trình</span><h2>Lịch trình buổi tiệc</h2></div>
+    <ol class="schedule reveal" id="schedule"></ol>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="xac-nhan" class="bg-white">
+  <div class="wrap">
+    <div class="rsvp-card reveal">
+      <div class="rsvp-intro">
+        <span class="eyebrow">RSVP</span>
+        <h2>Xác nhận tham dự</h2>
+        <p>Quý khách vui lòng phản hồi trước <span data-bind="rsvpDeadline">[hạn xác nhận]</span> để gia đình chuẩn bị chu đáo nhất. Sự hiện diện của quý khách là món quà ý nghĩa nhất dành cho bé.</p>
+        <span class="contact"><svg class="ic" width="18" height="18" style="color:var(--rose)"><use href="#i-phone"/></svg>Liên hệ: <span data-bind="contactPhone">[Số điện thoại gia đình]</span></span>
+        <p class="script">Rất mong được đón tiếp!</p>
+      </div>
+      <div class="rsvp-form-wrap">
+        <form id="rsvp" novalidate>
+          <div class="field">
+            <label for="f-name">Họ và tên</label>
+            <input class="input" id="f-name" type="text" autocomplete="name" placeholder="Nhập họ tên của quý khách">
+            <span class="err" id="f-err" role="alert" hidden>Vui lòng nhập họ tên để gia đình tiện sắp xếp chỗ ngồi.</span>
+          </div>
+          <div class="field">
+            <label for="f-phone">Số điện thoại <small>(không bắt buộc)</small></label>
+            <input class="input" id="f-phone" type="tel" autocomplete="tel" placeholder="09xx xxx xxx">
+          </div>
+          <fieldset>
+            <legend>Quý khách sẽ tham dự chứ?</legend>
+            <div class="pills">
+              <button type="button" class="pill" data-attend="yes" aria-pressed="true"><svg class="ic" width="16" height="16" style="stroke-width:2"><use href="#i-check"/></svg>Chắc chắn rồi</button>
+              <button type="button" class="pill" data-attend="no" aria-pressed="false"><svg class="ic" width="16" height="16" style="stroke-width:2"><use href="#i-check"/></svg>Rất tiếc, không thể</button>
+            </div>
+          </fieldset>
+          <div class="stepper" id="stepper">
+            <span id="g-label" style="font-size:14px;font-weight:500">Số người tham dự</span>
+            <div class="ctrl" role="group" aria-labelledby="g-label">
+              <button type="button" class="step-btn" id="g-dec" aria-label="Giảm số người">−</button>
+              <span class="step-val" id="g-val" aria-live="polite">1</span>
+              <button type="button" class="step-btn" id="g-inc" aria-label="Tăng số người">+</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Lời chúc gửi bé</label>
+            <textarea class="input" id="f-msg" rows="3" placeholder="Chúc bé hay ăn chóng lớn…"></textarea>
+          </div>
+          <button type="submit" class="submit">Gửi xác nhận</button>
+        </form>
+        <div class="thanks" id="thanks" role="status" hidden>
+          <span class="heart"><svg class="ic" width="34" height="34" style="color:var(--rose);stroke-width:1.5"><use href="#i-heart"/></svg></span>
+          <h3 id="t-title">Cảm ơn!</h3>
+          <p id="t-text"></p>
+          <button type="button" class="btn btn-ghost" id="again" style="height:48px;font-size:15px">Gửi phản hồi khác</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LỜI CHÚC -->
+<section id="loi-chuc" class="bg-blush">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Sổ lưu bút</span><h2>Lời chúc gửi bé</h2></div>
+    <div class="empty" id="empty">
+      <svg class="ic" width="30" height="30" style="color:#C27C8B;stroke-width:1.4"><use href="#i-pen"/></svg>
+      <b>Chưa có lời chúc nào</b>
+      <span>Hãy là người đầu tiên gửi yêu thương đến bé qua mục Xác nhận tham dự.</span>
+    </div>
+    <div class="wishes" id="wishes"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="script">Hẹn gặp quý khách!</p>
+    <p>Gia đình bé <span data-bind="babyName">[Tên bé]</span> xin chân thành cảm ơn.</p>
+    <div class="orn" aria-hidden="true"><span></span><svg class="ic" width="14" height="14" style="color:var(--gold)"><use href="#i-heart"/></svg><span></span></div>
+  </div>
+</footer>
+
+<script>
+/* ============ CẤU HÌNH THIỆP — sửa thông tin tại đây ============ */
+const CONFIG = {
+  babyName: "[Tên bé]",
+  parents: "Bố [Tên bố] & Mẹ [Tên mẹ]",
+  eventDate: "",                 // ví dụ: "2026-12-20T10:00" (để trống = chưa đếm ngược)
+  venueName: "[Tên nhà hàng / sảnh tiệc]",
+  venueAddress: "[Địa chỉ chi tiết]",
+  mapUrl: "",                    // link Google Maps của địa điểm
+  rsvpDeadline: "[hạn xác nhận]",
+  contactPhone: "[Số điện thoại gia đình]",
+  milestones: [
+    { title: "Ngày chào đời", note: "[Kỷ niệm ngắn]" },
+    { title: "Tháng thứ 3",   note: "[Kỷ niệm ngắn]" },
+    { title: "Tháng thứ 6",   note: "[Kỷ niệm ngắn]" },
+    { title: "Tròn 1 tuổi",   note: "[Kỷ niệm ngắn]" }
+  ],
+  schedule: [
+    { time: "[--:--]", icon: "i-users",  name: "Đón khách",            desc: "Gia đình đón tiếp, chụp ảnh lưu niệm cùng bé" },
+    { time: "[--:--]", icon: "i-flower", name: "Lễ cúng thôi nôi",     desc: "Tạ ơn Mụ bà và cầu chúc bé bình an, khôn lớn" },
+    { time: "[--:--]", icon: "i-gift",   name: "Bé bốc đồ đoán nghề",  desc: "Khoảnh khắc được mong chờ nhất buổi tiệc" },
+    { time: "[--:--]", icon: "i-cake",   name: "Tiệc mừng & thổi nến", desc: "Dùng tiệc, cắt bánh và gửi lời chúc đến bé" }
+  ]
+};
+/* ================================================================ */
+
+(function(){
+  const $ = (s, r=document) => r.querySelector(s);
+  const pad = n => String(n).padStart(2, "0");
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+  // Date
+  const d = CONFIG.eventDate ? new Date(CONFIG.eventDate) : null;
+  const valid = !!d && !isNaN(d.getTime());
+  const wd = ["Chủ nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy"];
+  const dateLong = valid ? `${wd[d.getDay()]}, ${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}` : "[Thứ …, ngày … tháng … năm …]";
+  const timeText = valid ? `${pad(d.getHours())}:${pad(d.getMinutes())}` : "[Giờ]";
+  const binds = {
+    babyName: CONFIG.babyName, parents: CONFIG.parents,
+    venueName: CONFIG.venueName, venueAddress: CONFIG.venueAddress,
+    rsvpDeadline: CONFIG.rsvpDeadline, contactPhone: CONFIG.contactPhone,
+    dateTime: `${timeText} · ${dateLong}`,
+    dateShort: valid ? `${wd[d.getDay()]} · ${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}` : "[Ngày tổ chức tiệc]"
+  };
+  document.querySelectorAll("[data-bind]").forEach(el => { const v = binds[el.dataset.bind]; if (v != null) el.textContent = v; });
+  document.title = `Thiệp mời thôi nôi – ${CONFIG.babyName}`;
+  if (CONFIG.mapUrl) $("#map-link").href = CONFIG.mapUrl;
+  if (valid) {
+    const f = x => x.toISOString().replace(/[-:]/g,"").split(".")[0] + "Z";
+    const end = new Date(d.getTime() + 3*3600e3);
+    const q = new URLSearchParams({ action:"TEMPLATE", text:`Tiệc thôi nôi ${CONFIG.babyName}`, dates:`${f(d)}/${f(end)}`, location:`${CONFIG.venueName}, ${CONFIG.venueAddress}` });
+    $("#cal-link").href = "https://calendar.google.com/calendar/render?" + q.toString();
+  }
+
+  // Guest name from #hash (vd: ...#co-lan → "Cô Lan")
+  const h = decodeURIComponent((location.hash || "").slice(1));
+  const sections = ["top","loi-ngo","hanh-trinh","thong-tin","chuong-trinh","xac-nhan","loi-chuc"];
+  if (h && !sections.includes(h)) {
+    $("#guest-name").textContent = h.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  }
+
+  // Gallery & schedule
+  $("#gallery").innerHTML = CONFIG.milestones.map(m => `
+    <figure class="g-card reveal"><div class="g-photo">Ảnh của bé</div>
+    <figcaption><b>${esc(m.title)}</b><span>${esc(m.note)}</span></figcaption></figure>`).join("");
+  $("#schedule").innerHTML = CONFIG.schedule.map(s => `
+    <li><span class="s-ico"><svg class="ic" width="26" height="26" style="color:var(--rose);stroke-width:1.5"><use href="#${s.icon}"/></svg></span>
+    <span class="s-txt"><span class="s-time">${esc(s.time)}</span><span class="s-name">${esc(s.name)}</span><span class="s-desc">${esc(s.desc)}</span></span></li>`).join("");
+
+  // Cover
+  const cover = $("#cover");
+  document.body.style.overflow = "hidden";
+  $("#open-btn").focus({ preventScroll: true });
+  $("#open-btn").addEventListener("click", () => {
+    cover.classList.add("hidden");
+    document.body.style.overflow = "";
+    setTimeout(() => cover.remove(), 800);
+  });
+
+  // Countdown
+  const tick = () => {
+    if (!valid) return;
+    const diff = Math.max(0, d.getTime() - Date.now());
+    $("#cd-d").textContent = pad(Math.floor(diff/864e5));
+    $("#cd-h").textContent = pad(Math.floor(diff/36e5) % 24);
+    $("#cd-m").textContent = pad(Math.floor(diff/6e4) % 60);
+    $("#cd-s").textContent = pad(Math.floor(diff/1e3) % 60);
+  };
+  tick(); setInterval(tick, 1000);
+
+  // Music toggle (gắn file nhạc khi có BE / asset)
+  const mb = $("#music-btn");
+  mb.addEventListener("click", () => mb.setAttribute("aria-pressed", mb.getAttribute("aria-pressed") === "true" ? "false" : "true"));
+
+  // RSVP
+  let attend = "yes", guests = 1;
+  const pills = document.querySelectorAll(".pill");
+  pills.forEach(p => p.addEventListener("click", () => {
+    attend = p.dataset.attend;
+    pills.forEach(x => x.setAttribute("aria-pressed", String(x === p)));
+    $("#stepper").hidden = attend !== "yes";
+  }));
+  const setG = n => { guests = Math.min(10, Math.max(1, n)); $("#g-val").textContent = guests; };
+  $("#g-inc").addEventListener("click", () => setG(guests + 1));
+  $("#g-dec").addEventListener("click", () => setG(guests - 1));
+  $("#f-name").addEventListener("input", () => $("#f-err").hidden = true);
+
+  const wishes = [];
+  const renderWishes = () => {
+    $("#empty").hidden = wishes.length > 0;
+    $("#wishes").innerHTML = wishes.map(w => `
+      <article class="wish"><p>“${esc(w.msg)}”</p>
+      <div class="who"><span class="avatar">${esc(w.name.charAt(0).toUpperCase())}</span><span><b>${esc(w.name)}</b><small>${w.yes ? "Sẽ tham dự" : "Gửi lời chúc"}</small></span></div></article>`).join("");
+  };
+
+  $("#rsvp").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("#f-name").value.trim();
+    if (!name) { $("#f-err").hidden = false; $("#f-name").focus(); return; }
+    const msg = $("#f-msg").value.trim();
+    // TODO(BE): gửi { name, phone, attend, guests, msg } lên API
+    if (msg) { wishes.unshift({ name, msg, yes: attend === "yes" }); renderWishes(); }
+    $("#t-title").textContent = `Cảm ơn ${name}!`;
+    $("#t-text").textContent = attend === "yes"
+      ? `Gia đình đã ghi nhận ${guests} khách. Hẹn gặp quý khách trong ngày vui của bé!`
+      : "Tiếc quá! Cảm ơn quý khách đã gửi yêu thương đến bé.";
+    $("#rsvp").hidden = true; $("#thanks").hidden = false;
+  });
+  $("#again").addEventListener("click", () => {
+    $("#rsvp").reset(); setG(1); pills[0].click();
+    $("#thanks").hidden = true; $("#rsvp").hidden = false;
+  });
+
+  // Reveal on scroll
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+  }), { threshold: .12 }) : null;
+  document.querySelectorAll(".reveal").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+})();
+</script>
+</body>
+</html>
